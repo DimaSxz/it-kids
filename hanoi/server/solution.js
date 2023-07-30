@@ -64,6 +64,9 @@ function searchSolution(userSteps, session) {
 }
 
 function solution(query, session) {
+  if (!session) {
+    throw new Error('Сессия не найдена, начните новую игру');
+  }
   const userSteps = JSON.parse(query.steps);
   return searchSolution(userSteps, session);
 }
