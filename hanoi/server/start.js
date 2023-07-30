@@ -8,8 +8,8 @@ function getDefaultState(numberOfDisks) {
 
 function startGame(query) {
   const numberOfDisks = parseInt(query.disks);
-  if (isNaN(numberOfDisks) || numberOfDisks < 3 || numberOfDisks > 10) {
-    throw new Error("Invalid 'disks' value. It should be a number greater than or equal to 3 and less or equal to 10.");
+  if (Number.isInteger(numberOfDisks) || numberOfDisks < 3 || numberOfDisks > 10) {
+    throw new Error("Неверное значение 'disks'. Оно должно быть целым числом от 3 до 10 включительно");
   }
 
   const movesRequired = Math.pow(2, numberOfDisks) - 1;
