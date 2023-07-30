@@ -129,7 +129,7 @@ function searchPathStepByStep(targetTower, userSteps) {
     if (hasError) {
       if(i === 0) {
         // Ошибочно определен targetTower
-        console.log('ошибочно определен targetTower');
+        console.log('Ошибочно определен targetTower');
         return;
       }
       path.push({ from: userSteps[userSteps.length - 1].to, to: userSteps[userSteps.length - 1].from });
