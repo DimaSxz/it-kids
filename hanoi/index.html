@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ханойская башня</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form onsubmit="startGame(); return false;">
+        <label for="disks">Выберите количество дисков:</label>
+        <input type="number" id="disks" name="disks" min="3" max="10" value="3">
+        <input type="submit" value="Начать игру">
+    </form>
+    <div class="container">
+        <div id="tower1" class="tower" onclick="selectTower(0)"></div>
+        <div id="tower2" class="tower" onclick="selectTower(1)"></div>
+        <div id="tower3" class="tower" onclick="selectTower(2)"></div>
+    </div>
+    <p id="message"></p>
+    <p id="moves">Ходов: 0</p>
+    <p id="timer"></p>
+    <button style="display: none;" id="autoButton" onclick="autoSolve()">Авто</button>
+    <script src="script.js"></script>
+</body>
+</html>
