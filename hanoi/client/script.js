@@ -8,6 +8,8 @@ let numberOfDisks;
 let timer
 let steps = [];
 
+let sessionId;
+
 function updateMoves() {
   const movesElement = document.getElementById('moves');
   movesElement.innerText = `Ходов: ${moves}, минимально необходимо: ${movesRequired}`;
@@ -21,6 +23,7 @@ async function startGame() {
     if (!response.ok) {
       throw data.message;
     }
+    sessionId = data.sessionId;
     steps = [];
     towers = data.towers;
     movesRequired = data.movesRequired;
@@ -44,7 +47,7 @@ async function selectTower(indexTower) {
   } else {
     document.querySelector('.disk.selected')?.classList.remove('selected');
     try {
-      const response = await fetch(`${host}/move?from=${selectedTower}&to=${indexTower}`);
+      const response = await fetch(`${host}/move?from=${selectedTower}&to=${indexTower}&sessionId=${sessionId}`);
       const data = await response.json();
       if (!response.ok) {
         throw data.message;
@@ -113,7 +116,7 @@ function stopTimer() {
 
 async function autoSolve() {
   try {
-    const response = await fetch(`${host}/solution?steps=${JSON.stringify(steps)}`);
+    const response = await fetch(`${host}/solution?steps=${JSON.stringify(steps)}&sessionId=${sessionId}`);
     const data = await response.json();
     if (!response.ok) {
       throw data.message;
@@ -125,7 +128,6 @@ async function autoSolve() {
     alert(error);
   }
 }
-
 
 async function autoPlay(steps) {
     selectedTower = null;
