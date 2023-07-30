@@ -8,7 +8,7 @@ function getDefaultState(numberOfDisks) {
 
 function startGame(query) {
   const numberOfDisks = parseInt(query.disks);
-  if (Number.isInteger(numberOfDisks) || numberOfDisks < 3 || numberOfDisks > 10) {
+  if (!Number.isInteger(numberOfDisks) || numberOfDisks < 3 || numberOfDisks > 10) {
     throw new Error("Неверное значение 'disks'. Оно должно быть целым числом от 3 до 10 включительно");
   }
 
