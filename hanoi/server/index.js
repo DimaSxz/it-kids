@@ -34,8 +34,6 @@ const server = http.createServer((req, res) => {
   let sessionId = parseInt(query.sessionId) || (sessions.size + 1);
   let session = sessions.get(sessionId);
 
-  console.log({session, sessionId});
-
   let response;
   try {
     switch (pathname) { 
@@ -71,6 +69,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Сервер слушает порт: ${port}`);
 });
 
