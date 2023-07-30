@@ -50,7 +50,7 @@ const server = http.createServer((req, res) => {
           sessions.set(sessionId, { ...session, towers: response.towers });
           okAnswer(res, {success: true, ...response });
         } else {
-          okAnswer({ success: false });
+          okAnswer(res, { success: false });
         }
         break;
 
