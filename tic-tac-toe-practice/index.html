@@ -17,6 +17,16 @@
         <option value="5">5x5</option>
       </select>
       <br>
+      <label for="play-with-computer">Играть с компьютером:</label>
+      <input type="checkbox" id="play-with-computer" name="playWithComputer">
+      <div id="side-choice" style="display: none;">
+        <label for="player-side">Выберите сторону:</label>
+        <select id="player-side" name="playerSide">
+          <option value="x">Крестики</option>
+          <option value="o">Нолики</option>
+        </select>
+      </div>
+      <br>
       <button type="button" id="start-button">Начать игру</button>
     </form>
     <br>
@@ -25,6 +35,7 @@
       <!-- Сюда будут динамически добавляться клетки сетки -->
     </div>
   </div>
+  <div id="board-cover"></div>
   <script src="script.js"></script>
 </body>
 </html>
