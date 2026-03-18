@@ -200,12 +200,27 @@ function checkPattern(indices, N) {
 function doComputerMove() {
   const uncheckedCells = document.querySelectorAll('.cell.unchecked');
   if (uncheckedCells.length === 0) {
+    boardCover.style.display = 'none'; // Скрываем "покрывало".
     return; // Нет свободных ячеек.
   }
 
-  // Выбираем случайную ячейку из свободных.
-  const randomCell = uncheckedCells[Math.floor(Math.random() * uncheckedCells.length)];
-  randomCell.click(); // Имитируем клик по ячейке.
+  if(uncheckedCells.length === gridSize * gridSize) {
+    if(Math.random() > 0.5) {
+      // Выбираем случайную ячейку из свободных.
+      const randomCell = uncheckedCells[Math.floor(Math.random() * uncheckedCells.length)];
+      randomCell.click(); // Имитируем клик по ячейке.
+    } else {
+      const centerIndex = Math.floor((gridSize * gridSize) / 2);
+      const centerCell = document.querySelector(`.cell[${cellIdxAttr}='${centerIndex}']`);
+      centerCell.click();
+    }
+
+  } else {
+    const compCells = document.querySelectorAll(`.cell[${cellPlayerAttr}=${currentPlayer}]`);
+    const humanCells = document.querySelectorAll((`.cell[${cellPlayerAttr}=${humanSide}]`));
+    
+  }
+  
   boardCover.style.display = 'none'; // Скрываем "покрывало".
 }
 

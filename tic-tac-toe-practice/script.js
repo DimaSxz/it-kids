@@ -36,7 +36,6 @@ startButton.addEventListener('click', () => {
 function startGame(settings) {
   const { size } = settings;
 
-
   // Если выбран новый размер поля, обновляем gridSize.
   if (size) {
     gridSize = Number(size);
@@ -181,7 +180,7 @@ function checkPattern(indices, N) {
     // Проверяем побочную диагональ.
     if (row + col === trigger) {
       if(secondaryDiagonal === trigger) {
-        return true; 
+        return true;
       }
       secondaryDiagonal++;
     }
@@ -191,7 +190,19 @@ function checkPattern(indices, N) {
   return false;
 }
 
-// // Функция для хода компьютера.
-// function doComputerMove() {
+// Функция для хода компьютера.
+function doComputerMove() {
 
-// }
+}
+
+async function showResultMessage(message) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      if (confirm(message)) {
+        resolve(true); // Пользователь согласен.
+      } else {
+        resolve(false); // Пользователь отказывается.
+      }
+    }, 50); // Добавляем небольшую задержку перед показом confirm.
+  });
+}
